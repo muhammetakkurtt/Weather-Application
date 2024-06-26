@@ -1,89 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Bitter', serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #d8fcd8;
     margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 80%;
+    width: 100%;
     max-width: 600px;
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
-    font-size: 2em;
+    font-family: 'Lilita One', cursive;
+    font-size: 2.5em;
     margin-bottom: 20px;
+    color: #00796b;
 }
 
 .input-group {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #cityInput {
-    width: 70%;
+    flex: 1;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
+    border: none;
+    font-size: 1em;
+    color: #00796b;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#cityInput:focus {
+    border-color: #004d40;
 }
 
 button {
     padding: 10px 20px;
     border: none;
-    background-color: #007BFF;
+    background-color: #00796b;
     color: white;
-    border-radius: 0 4px 4px 0;
     cursor: pointer;
     font-size: 1em;
+    outline: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #004d40;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #002d2b;
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.5);
 }
 
 #weatherInfo {
     margin-top: 20px;
+    color: #00796b;
 }
 
 #weatherInfo h2 {
     margin-bottom: 10px;
+    color: #004d40;
 }
 
 #weatherInfo p {
     margin: 5px 0;
+    color: #00796b;
 }
 
 #weatherInfo img {
     margin-top: 10px;
+    max-width: 100px;
 }
 
 .forecast-container {
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .forecast-day {
     flex: 1;
     padding: 10px;
-    border-left: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #e0f2f1;
     text-align: center;
+    transition: background-color 0.3s ease;
+    min-width: 100px;
+    margin: 5px;
 }
 
-.forecast-day:first-child {
-    border-left: none;
+.forecast-day:hover {
+    background-color: #b2dfdb;
 }
 
 .forecast-day img {
     display: block;
     margin: 10px auto;
+    max-width: 50px;
 }
