@@ -24,7 +24,7 @@ Weather App is a simple web application that allows users to get weather informa
 - Node.js (v20 or later)
 - Git
 
-### Adımlar
+### Steps
 
 1. Clone this repo:
     ```bash
@@ -54,3 +54,9 @@ Weather App is a simple web application that allows users to get weather informa
 1. Enter the city name.
 2. Click on the "Get Weather" button.
 3. Weather information and a 5-day forecast will be displayed
+
+## Live Demo
+
+You can try the application live at the following link:
+
+[Live Demo](https://weather-application-idor.onrender.com)
