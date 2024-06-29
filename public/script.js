@@ -35,6 +35,32 @@ document.getElementById('getWeatherBtn').addEventListener('click', function() {
         });
 });
 
+document.getElementById('getLocationWeatherBtn').addEventListener('click', function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            fetch(`/weather?lat=${lat}&lon=${lon}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Location not found');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayWeather(data);
+                })
+                .catch(error => {
+                    document.getElementById('weatherInfo').innerHTML = `<p>Error: ${error.message}</p>`;
+                });
+        }, error => {
+            alert('Geolocation is not supported by this browser or permission denied.');
+        });
+    } else {
+        alert('Geolocation is not supported by this browser.');
+    }
+});
+
 function displayWeather(weatherInfo) {
     const weatherInfoElement = document.getElementById('weatherInfo');
     const { locationName, currentWeatherData, forecastData } = weatherInfo;

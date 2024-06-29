@@ -10,12 +10,21 @@ app.use(express.static('public'));
 
 app.get('/weather', (req, res) => {
     const city = req.query.city;
-    const locationUrl = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${city}`;
-
+    const lat = req.query.lat;
+    const lon = req.query.lon;
+    let locationUrl;
+    
+    if (city) {
+        locationUrl = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${city}`;
+    } else if (lat && lon) {
+        locationUrl = `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${lat},${lon}`;
+    } else {
+        return res.status(400).send('City or coordinates are required');
+    }
     axios.get(locationUrl)
         .then(response => {
-            const locationKey = response.data[0].Key;
-            const locationName = response.data[0].LocalizedName;
+            const locationKey = response.data.Key || response.data[0].Key;
+            const locationName = response.data.LocalizedName || response.data[0].LocalizedName;
             const currentWeatherUrl = `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}`;
             const forecastUrl = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}&metric=true`;
 
