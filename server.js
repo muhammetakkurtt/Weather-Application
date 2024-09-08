@@ -6,7 +6,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 const apiKey = process.env.API_KEY;
 
-app.use(express.static('public'));
 
 app.get('/weather', (req, res) => {
     const city = req.query.city;
@@ -44,9 +43,6 @@ app.get('/weather', (req, res) => {
         });
 });
 
-app.listen(port, async () => {
+app.listen(port, () => {
     console.log(`Server running on port ${port}`);
-    
-    const open = await import('open');
-    open.default(`http://localhost:${port}`);
 });
